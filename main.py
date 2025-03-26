@@ -5,11 +5,10 @@ import websockets
 import subprocess
 import base64
 import os
+import logging
 
-#TODO: use tkinter to make a GUI
-#TODO: create error function
-#TODO: test on home computer
-#TODO: implement docker
+#TODO: test docker at home
+#TODO: pull home and set up logging
 
 gpuMaxLoad = 0.5 # 50% load; should later be user defined
 gpuMaxMemory = 0.5 # 50% memory; should later be user defined
@@ -41,19 +40,18 @@ async def writeToJSON(path, jsonData):
 
 # func for running .py file given path
 # returns dict with results of file
-async def runFile(path):
+async def runFile():
     try:
-        if path.endswith('.py'):
-            execute = subprocess.run(["python", path], capture_output = True, text = True)
-            result = {
-            "stdout": execute.stdout, # stdout is the output of the file i.e "Hello, World!"
-            "stderr": execute.stderr, # stderr is the error output of the file i.e "SyntaxError: invalid syntax"
-            "returncode": execute.returncode # returncode is the return code of the file i.e 0 or 1 
+        execute = subprocess.run(["docker", "run", "--rm", 
+                                  "--gpus", "all", "runner"], 
+                                 text=True, capture_output=True)
+        result = {
+        "stdout": execute.stdout, # stdout is the output of the file i.e "Hello, World!"
+        "stderr": execute.stderr, # stderr is the error output of the file i.e "SyntaxError: invalid syntax"
+        "returncode": execute.returncode # returncode is the return code of the file i.e 0 or 1 
         }
-            os.remove(path) # remove file 
-            return result
-        else:
-            return {"error": "unsupported file type: please use .py files"}
+        os.remove("runner.py") # remove file 
+        return result
     except Exception as err:
         return {"error": str(err)} # return error as dict to parse as JSON
 
@@ -66,12 +64,11 @@ async def listenRequests(websocket):
         try:
             data = json.loads(message) 
             if data.get("command") == "run-file":
-                if "file_name" in data and "file_content" in data: # required headers in JSON data that are constructed in server backend
-                    path = data["file_name"]
+                if "file_content" in data and data.get("file_name").endswith(".py"): # required headers in JSON data that are constructed in server backend
                     fileContent = base64.b64decode(data["file_content"]) # .py file transfers as base64 encoded string from frontend to backend to frontend
-                    with open(path, 'wb') as file:
+                    with open('runner.py', 'wb') as file:
                         file.write(fileContent)
-                    result = await runFile(path, websocket)
+                    result = await runFile()
                     await writeToJSON(fileResultPath, result)
                     await sendInfo(fileResultPath, websocket)
                 else: 
@@ -110,7 +107,9 @@ async def main():
             await asyncio.gather(sendGPU(websocket), listenRequests(websocket))
     except Exception as err:
         print("ws error: ", err)
-         
+    print("main")
 if __name__ == "__main__":
+    logging.getLOgger(__name__)
+    logging.basicConfig(filename='logs/logs.log', level=logging.INFO)
     asyncio.run(main())
     
