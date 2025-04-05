@@ -4,112 +4,128 @@ import asyncio
 import websockets
 import subprocess
 import base64
-import os
-
-#TODO: use tkinter to make a GUI
-#TODO: create error function
-#TODO: test on home computer
-#TODO: implement docker
 
 gpuMaxLoad = 0.5 # 50% load; should later be user defined
-gpuMaxMemory = 0.5 # 50% memory; should later be user defined
-gpuJasonPath = 'gpu_info.json' # constant path for GPU info
 fileResultPath = 'file_result.json' # constant path for file result
-url = 'ws://localhost:5050/gpu_info' # websocket URL (currently placeholder)
+url = 'ws://localhost:8080/connect-gpu' # websocket URL (currently placeholder)
+token = 123456
+
+# func for sending GPU info every 30 minutes
+# calls getGPUs() 
+# returns None
+async def send(websocket):
+        while True:
+            payload = await getPayload(0)
+            if payload is not None:
+                try:
+                    await websocket.send(json.dumps(payload))
+                except Exception as err:
+                    print(err)
+            await asyncio.sleep(15)
 
 # func for getting GPU info
 # returns list of dicts with GPU info
 # returns none if GPU load or memory exceeds max
-async def getGPUs():
-    gpuList = []
+async def getGPUs(): #TODO check if gputil can gather gpu temp if not then dont bother
     gpus = GPUtil.getGPUs() 
-    for gpu in gpus: # will parse through all data for every GPU in system 
-        info = {
-            "load": gpu.load * 100, # saves load as percentage. subject to change
-            "memory": gpu.memoryMax / gpu.memoryFree # saves in percentage. subject to change
-        }
-        if info["load"] > gpuMaxLoad or info["memory"] < gpuMaxMemory:
-            return None
-        gpuList.append(info)
-    return gpuList
+    gpuMemory = 0
+    if gpus is not None:
+        for gpu in gpus: # will parse through all data for every GPU in system 
+            if gpu.load < gpuMaxLoad: # check if over user defined limit
+                gpuMemory += gpu.memoryFree # assigns values for load and memory as floats
+    return gpuMemory
 
-# func for writing to JSON file given path and data
+#func for constructing payload
+#returns dict with payload
+async def getPayload(message):
+    gpuInfo = await getGPUs()
+    if gpuInfo is not None:
+        payload = {
+            "token": token,
+            "memory": gpuInfo,
+            "output": message
+        }
+        return payload
+    else:
+        return None
+
+# func for listening to websocket
+# calls messageHandler
+async def listen(websocket):
+    while True:
+        try: 
+            message = await websocket.recv()
+            print(f'got message: {message}')
+            data = json.loads(message)
+            await messageHandler(data, websocket)
+        except websockets.exceptions.ConnectionClosedOK:
+            asyncio.run(main())
+        except Exception as err:
+            print("Error receiving ws: ", err)
+
+# func parsing through message content
+# should only look for JSON data with command "run-file"
+#calls runFile() and sendOutput
 # returns None
-async def writeToJSON(path, jsonData):
-    with open(path, 'w') as jsonFile:
-        json.dump(jsonData, jsonFile, indent = 4)
+async def messageHandler(data, websocket):
+    try:
+        if data.get("command") == "run-file":
+            if "file_name" in data and "file_content" in data: # required headers in JSON data that are constructed when json is sent
+                path = data["file_name"]
+                forwardingToken = data["token"]
+                fileContent = base64.b64decode(data["file_content"]) # .py file transfers as base64 encoded string from frontend to backend to frontend
+                with open(path, 'wb') as file:
+                    file.write(fileContent)
+                result = await runFile(path)
+                print(result)
+                await sendOutput(result, forwardingToken, websocket)
+            else: 
+                await sendOutput({"error": "JSON data is not structured correctly: please include file_name and file_content"}, forwardingToken, websocket)
+    except Exception as err:
+        print(err)
 
 # func for running .py file given path
 # returns dict with results of file
 async def runFile(path):
     try:
         if path.endswith('.py'):
+            print("now about to run file")
             execute = subprocess.run(["python", path], capture_output = True, text = True)
             result = {
             "stdout": execute.stdout, # stdout is the output of the file i.e "Hello, World!"
             "stderr": execute.stderr, # stderr is the error output of the file i.e "SyntaxError: invalid syntax"
-            "returncode": execute.returncode # returncode is the return code of the file i.e 0 or 1 
+            "returncode": execute.returncode, # returncode is the return code of the file i.e 0 or 1 
         }
-            os.remove(path) # remove file 
+            # os.remove(path) # remove file 
             return result
         else:
             return {"error": "unsupported file type: please use .py files"}
     except Exception as err:
         return {"error": str(err)} # return error as dict to parse as JSON
-
-# func for listening to websocket
-# should only look for JSON data with command "run-file"
-#calls runFile() and writeToJSON() and sendInfo()
+    
+# func for sending file output data 
 # returns None
-async def listenRequests(websocket):
-    async for message in websocket:
-        try:
-            data = json.loads(message) 
-            if data.get("command") == "run-file":
-                if "file_name" in data and "file_content" in data: # required headers in JSON data that are constructed in server backend
-                    path = data["file_name"]
-                    fileContent = base64.b64decode(data["file_content"]) # .py file transfers as base64 encoded string from frontend to backend to frontend
-                    with open(path, 'wb') as file:
-                        file.write(fileContent)
-                    result = await runFile(path, websocket)
-                    await writeToJSON(fileResultPath, result)
-                    await sendInfo(fileResultPath, websocket)
-                else: 
-                    await websocket.send(json.dumps({"error": "JSON data is not structured correctly: please include file_name and file_content"}))
-        except Exception as err:
-            print(err)
-
-# func for sending JSON data 
-# returns None
-async def sendInfo(filePath, websocket):
+async def sendOutput(sendData, forwardingToken, websocket):
     try:
-        with open(filePath, 'r') as jsonFile:
-            fileLeaving = json.load(jsonFile)
-        await websocket.send(json.dumps(fileLeaving))
+        payload =  await getPayload(sendData)
+        print(payload)
+        payload["forwarding_token"] = forwardingToken
+        print(payload)
+        await websocket.send(json.dumps(payload))
+        print("sent")
     except Exception as err:
         print(err)
 
-# func for sending GPU info every 5 minutes
-# calls getGPUs() and writeToJSON() and sendInfo()
-# returns None
-async def sendGPU(websocket):
-    while True:
-        gpuInfo = await getGPUs()
-        if gpuInfo: 
-            await writeToJSON(gpuJasonPath, gpuInfo)
-            await sendInfo(gpuJasonPath, websocket)
-        await asyncio.sleep(300)
-
 # main function for running all functions
-# calls sendGPU() and listenRequests() at once
+# calls sendGPU() and listen() at once
 # enables program to send GPU continuously and listen to websocket
 # returns None
 async def main():
-    try:
+    try: 
         async with websockets.connect(url) as websocket:
-            await asyncio.gather(sendGPU(websocket), listenRequests(websocket))
+            await asyncio.gather(send(websocket), listen(websocket))
     except Exception as err:
-        print("ws error: ", err)
+        print("Websocket error: %s" % err)
          
 if __name__ == "__main__":
     asyncio.run(main())
