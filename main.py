@@ -20,16 +20,21 @@ token = 123456
 async def send(websocket):
         while True:
             logging.debug("gathering payload")
+            print("gathering payload...")
             payload = await getPayload(0)
             logging.debug(f"payload gathered: {payload}")
+            print(f"payload gathered: {payload}")
             if payload is not None:
                 try:
                     logging.debug(f"sending payload to websocket - {websocket}")
+                    print("sending payload to websocket...")
                     await websocket.send(json.dumps(payload))
                     logging.debug(f"{payload} sent")
                     logging.info("Sent GPU information to server")
+                    print("GPU info sent!")
                 except Exception as err:
                     logging.error(f"Error sending payload: {err}")
+                    print(f"Error sending payload: {err}")
             await asyncio.sleep(15)
 
 # func for getting GPU info
@@ -38,18 +43,20 @@ async def send(websocket):
 async def getGPUs(): #TODO check if gputil can gather gpu temp if not then dont bother
     gpus = GPUtil.getGPUs() 
     logging.debug(f"got gpus: {gpus}")
+    print(f"got gpus!")
     gpuMemory = 0
     if gpus is not None:
         for gpu in gpus: # will parse through all data for every GPU in system 
             if gpu.load < gpuMaxLoad: # check if over user defined limit
                 logging.debug(f"got gpu memory : {gpu.memoryFree}")
-                gpuMemory += gpu.memoryFree # assigns values for load and memory as floats
+                gpuMemory += gpu.memoryFree 
     return gpuMemory
 
 #func for constructing payload
 #returns dict with payload
 async def getPayload(message):
     logging.debug("getting gpu information")
+    print("getting gpu information...")
     gpuInfo = await getGPUs()
     logging.debug(f"gpuInfo: {gpuInfo}")
     if gpuInfo is not None:
@@ -62,6 +69,7 @@ async def getPayload(message):
         return payload
     else:
         logging.debug(f"gpuInfo is None: {gpuInfo}")
+        print(f"there is no GPU available")
         return None
 
 # func for listening to websocket
@@ -72,6 +80,7 @@ async def listen(websocket):
         try: 
             message = await websocket.recv()
             logging.debug(f'got message: {message}')
+            print("got a job!")
             data = json.loads(message)
             await messageHandler(data, websocket)
         except websockets.exceptions.ConnectionClosedOK:
@@ -87,6 +96,7 @@ async def listen(websocket):
 # returns None
 async def messageHandler(data, websocket):
     logging.debug("starting messageHandler()")
+    print("data")
     try:
         if data.get("command") == "run-file":
             logging.debug("found run-file")
@@ -96,6 +106,7 @@ async def messageHandler(data, websocket):
                 forwardingToken = data["token"]
                 logging.debug(f"obtained path: {path} and forwardingToken: {forwardingToken}")
                 fileContent = base64.b64decode(data["file_content"]) # .py file transfers as base64 encoded string from frontend to backend to frontend
+                print(fileContent)
                 with open(path, 'wb') as file:
                     file.write(fileContent)
                 result = await runFile(path)
@@ -109,6 +120,7 @@ async def messageHandler(data, websocket):
 # returns dict with results of file
 async def runFile(path):
     logging.debug("starting runFile()")
+    print("starting run...")
     try:
         if path.endswith('.py'):
             logging.debug("path ends with .py")
@@ -120,7 +132,8 @@ async def runFile(path):
             "returncode": execute.returncode, # returncode is the return code of the file i.e 0 or 1 
         }
             logging.debug(f"file completed with result: {result}")
-            os.remove(path) # remove file 
+            print("run finished!")
+            # os.remove(path) # remove file 
             return result
         else:
             return {"error": "unsupported file type: please use .py files"}
@@ -136,6 +149,7 @@ async def sendOutput(sendData, forwardingToken, websocket):
         payload =  await getPayload(sendData)
         payload["forwarding_token"] = forwardingToken
         logging.debug(f"added forwardingToken: {forwardingToken} to payload")
+        print("sending output...")
         await websocket.send(json.dumps(payload))
         logging.debug("output sent")
     except Exception as err:
@@ -147,11 +161,15 @@ async def sendOutput(sendData, forwardingToken, websocket):
 # returns None
 async def main():
     logging.info("main() started")
+    print("main() started")
     try: 
         logging.debug(f"Connecting to websocket at {url}")
+        print(f"Connecting to websocket at {url}")
         async with websockets.connect(url) as websocket:
             logging.debug(f"connected to websocket: {websocket}")
+            print(f"Connected to websocket: {websocket}")
             logging.info("starting send() and listen()")
+            print(f"starting send() and listen()")
             await asyncio.gather(send(websocket), listen(websocket))
     except Exception as err:
         logging.error("Websocket error: %s" % err)
