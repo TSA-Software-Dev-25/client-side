@@ -213,3 +213,1779 @@ INFO:root:Sent GPU information to server
 INFO:root:Sent GPU information to server
 INFO:root:Sent GPU information to server
 INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:148> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 163, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 155, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 129, in print_exception
+    te = TracebackException(type(value), value, tb, limit=limit, compact=True)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 1134, in __init__
+    context = TracebackException(
+              ^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+        _seen=_seen)
+        ^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 1044, in __init__
+    self.stack = StackSummary._extract_from_extended_frame_gen(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 487, in _extract_from_extended_frame_gen
+    linecache.checkcache(filename)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:148> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 163, in <module>
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 155, in main
+    async with websockets.connect(url) as websocket:
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1084, in handleError
+    traceback.print_stack(frame, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 239, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+  File "/usr/lib64/python3.13/traceback.py", line 31, in print_list
+    print(item, file=file, end="")
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:149> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 168, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 160, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1084, in handleError
+    traceback.print_stack(frame, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 239, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 260, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 445, in extract
+    return klass._extract_from_extended_frame_gen(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        extended_frame_gen(), limit=limit, lookup_lines=lookup_lines,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 492, in _extract_from_extended_frame_gen
+    f.line
+  File "/usr/lib64/python3.13/traceback.py", line 369, in line
+    self._set_lines()
+  File "/usr/lib64/python3.13/traceback.py", line 350, in _set_lines
+    lines.append(linecache.getline(self.filename, lineno).rstrip())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/linecache.py", line 21, in getline
+    def getline(filename, lineno, module_globals=None):
+    
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:151> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 162, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1084, in handleError
+    traceback.print_stack(frame, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 239, in print_stack
+    print_list(extract_stack(f, limit=limit), file=file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 260, in extract_stack
+    stack = StackSummary.extract(walk_stack(f), limit=limit)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 445, in extract
+    return klass._extract_from_extended_frame_gen(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        extended_frame_gen(), limit=limit, lookup_lines=lookup_lines,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        capture_locals=capture_locals)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 487, in _extract_from_extended_frame_gen
+    linecache.checkcache(filename)
+  File "/usr/lib64/python3.13/linecache.py", line 72, in checkcache
+    stat = os.stat(fullname)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:151> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 162, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 130, in print_exception
+    te.print(file=file, chain=chain, colorize=colorize)
+  File "/usr/lib64/python3.13/traceback.py", line 1455, in print
+    print(line, file=file, end="")
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:151> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 162, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 130, in print_exception
+    te.print(file=file, chain=chain, colorize=colorize)
+  File "/usr/lib64/python3.13/traceback.py", line 1455, in print
+    print(line, file=file, end="")
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:151> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 162, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 130, in print_exception
+    te.print(file=file, chain=chain, colorize=colorize)
+  File "/usr/lib64/python3.13/traceback.py", line 1454, in print
+    for line in self.format(chain=chain, colorize=colorize):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 1390, in format
+    yield from _ctx.emit(exc.stack.format(colorize=colorize))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 749, in format
+    formatted_frame = self.format_frame_summary(frame_summary, colorize=colorize)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 581, in format_frame_summary
+    with suppress(Exception):
+         ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/contextlib.py", line 450, in __exit__
+    def __exit__(self, exctype, excinst, exctb):
+    
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:151> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 162, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 130, in print_exception
+    te.print(file=file, chain=chain, colorize=colorize)
+  File "/usr/lib64/python3.13/traceback.py", line 1454, in print
+    for line in self.format(chain=chain, colorize=colorize):
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 1390, in format
+    yield from _ctx.emit(exc.stack.format(colorize=colorize))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/traceback.py", line 768, in format
+    result.append(formatted_frame)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:151> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 73, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in <module>
+    asyncio.run(main())
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 162, in main
+    await asyncio.gather(send(websocket), listen(websocket))
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 82, in listen
+    logging.error("Error receiving ws: ", err)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 130, in print_exception
+    te.print(file=file, chain=chain, colorize=colorize)
+  File "/usr/lib64/python3.13/traceback.py", line 1455, in print
+    print(line, file=file, end="")
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/cnnr/Documents/Programs/TSA-SD-25/main.py:159> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 81, in listen
+    message = await websocket.recv()
+              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cnnr/.local/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1150, in emit
+    msg = self.format(record)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 998, in format
+    return fmt.format(record)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 711, in format
+    record.message = record.getMessage()
+                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 400, in getMessage
+    msg = msg % self.args
+          ^^^^^^^^^^^^^^^
+TypeError: not all arguments converted during string formatting
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 178, in <module>
+    logging.getLogger(__name__)
+    ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 193, in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 62, in __exit__
+    self.close()
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 70, in close
+    _cancel_all_tasks(loop)
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 205, in _cancel_all_tasks
+    loop.run_until_complete(tasks.gather(*to_cancel, return_exceptions=True))
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 170, in main
+    print(f"Connected to websocket: {websocket}")
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 708, in run_until_complete
+    self.run_forever()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 679, in run_forever
+    self._run_once()
+  File "/usr/lib64/python3.13/asyncio/base_events.py", line 2027, in _run_once
+    handle._run()
+  File "/usr/lib64/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/cnnr/Documents/Programs/TSA-SD-25/main.py", line 90, in listen
+    except Exception as err:
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.13/logging/__init__.py", line 2162, in error
+    root.error(msg, *args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1548, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1664, in _log
+    self.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1680, in handle
+    self.callHandlers(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1736, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1026, in handle
+    self.emit(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1264, in emit
+    StreamHandler.emit(self, record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1158, in emit
+    self.handleError(record)
+  File "/usr/lib64/python3.13/logging/__init__.py", line 1075, in handleError
+    traceback.print_exception(exc, limit=None, file=sys.stderr)
+  File "/usr/lib64/python3.13/traceback.py", line 130, in print_exception
+    te.print(file=file, chain=chain, colorize=colorize)
+  File "/usr/lib64/python3.13/traceback.py", line 1455, in print
+    print(line, file=file, end="")
+  File "/usr/lib64/python3.13/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+INFO:root:main() started
+INFO:root:starting send() and listen()
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
+INFO:root:Sent GPU information to server
