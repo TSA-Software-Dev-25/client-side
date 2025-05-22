@@ -6,13 +6,13 @@ import subprocess
 import base64
 import os
 import logging
+import uuid
 
-#TODO: test docker at home
-
-gpuMaxLoad = 0.5 # 50% load; should later be user defined
+gpuMaxLoad = 0.5 # 50% load
 fileResultPath = 'file_result.json' # constant path for file result
 url = 'ws://localhost:8080/exchange/connect' # websocket URL (currently placeholder)
-token = 123456
+token = uuid.uuid4()
+dockerBuilt = None
 
 # func for sending GPU info every 30 minutes
 # calls getGPUs() 
@@ -20,30 +20,24 @@ token = 123456
 async def send(websocket):
         while True:
             logging.debug("gathering payload")
-            print("gathering payload...")
             payload = await getPayload(0)
             logging.debug(f"payload gathered: {payload}")
-            print(f"payload gathered: {payload}")
             if payload is not None:
                 try:
                     logging.debug(f"sending payload to websocket - {websocket}")
-                    print("sending payload to websocket...")
                     await websocket.send(json.dumps(payload))
                     logging.debug(f"{payload} sent")
                     logging.info("Sent GPU information to server")
-                    print("GPU info sent!")
                 except Exception as err:
                     logging.error(f"Error sending payload: {err}")
-                    print(f"Error sending payload: {err}")
             await asyncio.sleep(15)
 
 # func for getting GPU info
 # returns list of dicts with GPU info
 # returns none if GPU load or memory exceeds max
-async def getGPUs(): #TODO check if gputil can gather gpu temp if not then dont bother
+async def getGPUs(): 
     gpus = GPUtil.getGPUs() 
     logging.debug(f"got gpus: {gpus}")
-    print(f"got gpus!")
     gpuMemory = 0
     if gpus is not None:
         for gpu in gpus: # will parse through all data for every GPU in system 
@@ -56,7 +50,6 @@ async def getGPUs(): #TODO check if gputil can gather gpu temp if not then dont 
 #returns dict with payload
 async def getPayload(message):
     logging.debug("getting gpu information")
-    print("getting gpu information...")
     gpuInfo = await getGPUs()
     logging.debug(f"gpuInfo: {gpuInfo}")
     if gpuInfo is not None:
@@ -69,7 +62,6 @@ async def getPayload(message):
         return payload
     else:
         logging.debug(f"gpuInfo is None: {gpuInfo}")
-        print(f"there is no GPU available")
         return None
 
 # func for listening to websocket
@@ -80,7 +72,6 @@ async def listen(websocket):
         try: 
             message = await websocket.recv()
             logging.debug(f'got message: {message}')
-            print("got a job!")
             data = json.loads(message)
             await messageHandler(data, websocket)
         except websockets.exceptions.ConnectionClosedOK:
@@ -96,17 +87,16 @@ async def listen(websocket):
 # returns None
 async def messageHandler(data, websocket):
     logging.debug("starting messageHandler()")
-    print("data")
     try:
+        forwardingToken = data.get("token")
         if data.get("command") == "run-file":
             logging.debug("found run-file")
-            if "file_name" in data and "file_content" in data: # required headers in JSON data that are constructed when json is sent
+            if "file_name" in data and "file_content" in data and data["file_name"].endswith('.py'): # required headers in JSON data that are constructed when json is sent
                 logging.debug("found file_name and file_content")
-                path = data["file_name"]
+                path = "job.py"
                 forwardingToken = data["token"]
                 logging.debug(f"obtained path: {path} and forwardingToken: {forwardingToken}")
                 fileContent = base64.b64decode(data["file_content"]) # .py file transfers as base64 encoded string from frontend to backend to frontend
-                print(fileContent)
                 with open(path, 'wb') as file:
                     file.write(fileContent)
                 result = await runFile(path)
@@ -125,15 +115,26 @@ async def runFile(path):
         if path.endswith('.py'):
             logging.debug("path ends with .py")
             logging.debug("running file")
-            execute = subprocess.run(["python", path], capture_output = True, text = True)
+            if (dockerBuilt):
+                try:
+                    abs_path = os.path.abspath(path)
+                    cmd = [
+                        "docker", "run", "--rm",
+                        "-v", f"{abs_path}:/app/job.py:ro",
+                        "terraining" 
+                    ]
+                    execute = subprocess.run(cmd, capture_output=True, text=True)
+                except Exception as e:
+                    execute = subprocess.run(["python", path], capture_output = True, text = True)
+            else: 
+                execute = subprocess.run(["python", path], capture_output = True, text = True)
             result = {
             "stdout": execute.stdout, # stdout is the output of the file i.e "Hello, World!"
             "stderr": execute.stderr, # stderr is the error output of the file i.e "SyntaxError: invalid syntax"
             "returncode": execute.returncode, # returncode is the return code of the file i.e 0 or 1 
         }
             logging.debug(f"file completed with result: {result}")
-            print("run finished!")
-            # os.remove(path) # remove file 
+            os.remove(path) # remove file 
             return result
         else:
             return {"error": "unsupported file type: please use .py files"}
@@ -149,11 +150,20 @@ async def sendOutput(sendData, forwardingToken, websocket):
         payload =  await getPayload(sendData)
         payload["forwarding_token"] = forwardingToken
         logging.debug(f"added forwardingToken: {forwardingToken} to payload")
-        print("sending output...")
         await websocket.send(json.dumps(payload))
         logging.debug("output sent")
     except Exception as err:
         logging.error(f"Error sending output: {err}")
+
+#func for checking if docker is installed 
+# returns bool
+def checkDocker(): 
+    try: 
+        check = subprocess.run(["docker", "run", "--help"], capture_output=True, text=True)
+    except Exception as err:
+        return False
+    return True
+
 
 # main function for running all functions
 # calls sendGPU() and listen() at once
@@ -161,10 +171,8 @@ async def sendOutput(sendData, forwardingToken, websocket):
 # returns None
 async def main():
     logging.info("main() started")
-    print("main() started")
     try: 
         logging.debug(f"Connecting to websocket at {url}")
-        print(f"Connecting to websocket at {url}")
         async with websockets.connect(url) as websocket:
             logging.debug(f"connected to websocket: {websocket}")
             print(f"Connected to websocket: {websocket}")
@@ -175,8 +183,23 @@ async def main():
         logging.error("Websocket error: %s" % err)
          
 if __name__ == "__main__":
+    if checkDocker():
+        try: 
+            subprocess.run(["docker", "inspect", "terraining"], 
+            capture_output=True, text=True)
+            dockerBuilt = True
+        except Exception as e:
+            try:
+                subprocess.run(
+                    ["docker", "build", "-t", "terraining:latest", "--file", "DockerFile.main" ],
+                    capture_output=True, text=True)
+                dockerBuilt = True
+            except Exception as e:
+                dockerBuilt = False
+    else:
+        dockerBuilt = False 
     logging.getLogger(__name__)
     logging.basicConfig(filename='logs/logs.log', level=logging.INFO)
     logging.debug("Starting main()")
+    print(dockerBuilt)
     asyncio.run(main())
-    
